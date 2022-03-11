@@ -26,14 +26,15 @@
 # end
 
 class Greeter
-  attr_reader :time
+  attr_reader :time, :template
 
-  def self.greet(name:, time: nil)
-    new(time: time).greet(name)
+  def self.greet(template, name:, time: nil)
+    new(template: template, time: time).greet(name)
   end
 
-  def initialize(time: nil)
+  def initialize(template:, time: nil)
     @time = time
+    @template = template
   end
 
   def greet(name)
@@ -59,22 +60,17 @@ class Greeter
     evening = sixpm..tenpm
   
      if !time
-      return "Hello " + formatted_name
+      return template[:default] % {name: formatted_name}
     end
     if morning.include?(time)
-      return "Good morning #{formatted_name}"
+      return template[:morning] % {name: formatted_name}
     elsif evening.include?(time)
-      return "Good evening #{formatted_name}"
-    elsif afternoon.include?(time)
-      return "Hello #{formatted_name}"
+      return template[:evening] % {name: formatted_name}
     else
-      return "Good night #{formatted_name}"
+      return template[:night] % {name: formatted_name}
+      # return "Good night #{formatted_name}"
     end    
   end
-end
-
-def pureGreet(name, time)
-  Greeter.new(time).greet(name)
 end
 
 
