@@ -39,9 +39,17 @@ RSpec.describe Calculator do
     expect(result).to eq 2000
   end
 
-  # Ryan wrote failing test, over to Paul to implement
+  # simplifying assumption: only split by newline and custom delimiter when a custom delimiter is given
   it "A single char delimiter can be defined on the first line starting with `//`" do
     input = "//#\n1#2"
+
+    result = Calculator.calc(input)
+
+    expect(result).to eq 3
+  end
+
+  it "A multi char delimiter can be defined on the first line starting with //" do
+    input = "//ab\n1ab2"
 
     result = Calculator.calc(input)
 
