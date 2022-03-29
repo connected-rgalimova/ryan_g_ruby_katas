@@ -1,87 +1,213 @@
 require './app/roman'
 
-RSpec.describe Roman do
-  it "Given a Roman Numeral, return as an Integer 3" do 
+RSpec.describe IntegerToRoman do
+  subject(:itor) { described_class }
+
+  it 'should return I given 1' do
+    res = itor.calc(1)
+
+    expect(res).to eq 'I'
+  end
+
+  it 'should return III given 3' do
+    res = itor.calc(3)
+
+    expect(res).to eq 'III'
+  end
+
+  it 'should return VI given 6' do
+    res = itor.calc(6)
+
+    expect(res).to eq 'VI'
+  end
+
+  it 'should return XVII given 17' do
+    res = itor.calc(17)
+
+    expect(res).to eq 'XVII'
+  end
+
+  it 'should return LXXXVII given 87' do
+    res = itor.calc(87)
+
+    expect(res).to eq 'LXXXVII'
+  end
+
+  it 'should return MCXXXVII given 1137' do
+    res = itor.calc(1137)
+
+    expect(res).to eq 'MCXXXVII'
+  end
+
+  it 'should return MDCCCLXXXVII given 1887' do
+    res = itor.calc(1887)
+
+    expect(res).to eq 'MDCCCLXXXVII'
+  end
+
+  it 'should return MDCCCLXXXV given 1885' do
+    res = itor.calc(1885)
+
+    expect(res).to eq 'MDCCCLXXXV'
+  end
+
+  it 'should return MD given 1500' do
+    res = itor.calc(1500)
+
+    expect(res).to eq 'MD'
+  end
+
+  it 'should return M given 1000' do
+    res = itor.calc(1000)
+
+    expect(res).to eq 'M'
+  end
+
+  it 'should return XXV given 25' do
+    res = itor.calc(25)
+
+    expect(res).to eq 'XXV'
+  end
+
+  it 'should return LV given 55' do
+    res = itor.calc(55)
+
+    expect(res).to eq 'LV'
+  end
+
+  it 'should return IV given 4' do
+    res = itor.calc(4)
+
+    expect(res).to eq 'IV'
+  end
+
+  it 'should return IX given 9' do
+    res = itor.calc(9)
+
+    expect(res).to eq 'IX'
+  end
+
+  it 'should return XXIX given 29' do
+    res = itor.calc(29)
+
+    expect(res).to eq 'XXIX'
+  end
+
+  it 'should return XCIX given 99' do
+    res = itor.calc(99)
+
+    expect(res).to eq 'XCIX'
+  end
+
+  it 'should return CMXCIX given 999' do
+    res = itor.calc(999)
+
+    expect(res).to eq 'CMXCIX'
+  end
+
+  it 'should return LIV given 54' do
+    res = itor.calc(54)
+
+    expect(res).to eq 'LIV'
+  end
+
+  it 'should return MMMMCDXLIV given 4444' do
+    res = itor.calc(4444)
+
+    expect(res).to eq 'MMMMCDXLIV'
+  end
+
+  it 'should return MMMMXLIV given 4044' do
+    res = itor.calc(4044)
+
+    expect(res).to eq 'MMMMXLIV'
+  end
+end
+
+RSpec.describe RomanToInteger do
+  subject(:roman_to_integer_calculator) { described_class }
+
+  it "Given a RomanNumeral, return as an Integer 3" do 
     input = 'III'
 
-    result = Roman.calc(input)
+    result = roman_to_integer_calculator.calc(input)
 
     expect(result).to eq 3
   end
 
-  it "Given a Roman Numeral IV , return as an Integer 4" do
+  it "Given a RomanNumeral IV , return as an Integer 4" do
     input = 'IV'
 
-    result = Roman.calc(input)
+    result = roman_to_integer_calculator.calc(input)
 
     expect(result).to eq 4
   end
 
-  it "Given a Roman Numeral XIV , return as an Integer 14" do 
+  it "Given a RomanNumeral XIV , return as an Integer 14" do 
     input = 'XIV'
 
-    result = Roman.calc(input)
+    result = roman_to_integer_calculator.calc(input)
 
     expect(result).to eq 14
   end
 
-  it "Given a Roman Numeral XXXIX, return as an Integer 39" do 
+  it "Given a RomanNumeral XXXIX, return as an Integer 39" do 
     input = 'XXXIX'
 
-    result = Roman.calc(input)
+    result = roman_to_integer_calculator.calc(input)
 
     expect(result).to eq 39
   end
 
-  it "Given a Roman Numeral CCXLVI, return as an Integer 246" do
+  it "Given a RomanNumeral CCXLVI, return as an Integer 246" do
     input = 'CCXLVI'
 
-    result = Roman.calc(input)
+    result = roman_to_integer_calculator.calc(input)
 
     expect(result).to eq 246
   end
 
-  it "Given a Roman Numeral DCCLXXXIX, return as an Integer 789 " do
+  it "Given a RomanNumeral DCCLXXXIX, return as an Integer 789 " do
     input = 'DCCLXXXIX'
 
-    result = Roman.calc(input)
+    result = roman_to_integer_calculator.calc(input)
 
     expect(result).to eq 789
   end
 
-  it "Given a Roman Numeral MMCDXXI, return as an Integer 2,421 " do
+  it "Given a RomanNumeral MMCDXXI, return as an Integer 2,421 " do
     input = 'MMCDXXI'
 
-    result = Roman.calc(input)
+    result = roman_to_integer_calculator.calc(input)
 
     expect(result).to eq 2421
   end
-  it "Given a Roman Numeral MLXVI, return as an Integer 1,066 " do 
+  it "Given a RomanNumeral MLXVI, return as an Integer 1,066 " do 
     input = 'MLXVI'
 
-    result = Roman.calc(input)
+    result = roman_to_integer_calculator.calc(input)
 
     expect(result).to eq 1066
   end
 
-  it "Given a Roman Numeral CLX, return as an Integer 160 " do
+  it "Given a RomanNumeral CLX, return as an Integer 160 " do
     input = 'CLX'
 
-    result = Roman.calc(input)
+    result = roman_to_integer_calculator.calc(input)
 
     expect(result).to eq 160
   end
-  it "Given a Roman Numeral  CCVII, return as an Integer 207" do
+  it "Given a RomanNumeral  CCVII, return as an Integer 207" do
     input = 'CCVII'
 
-    result = Roman.calc(input)
+    result = roman_to_integer_calculator.calc(input)
 
     expect(result).to eq 207
   end
-  it "Given a Roman Numeral  MIX, return as an Integer 1,009" do 
+  it "Given a RomanNumeral  MIX, return as an Integer 1,009" do 
     input = 'MIX'
 
-    result = Roman.calc(input)
+    result = roman_to_integer_calculator.calc(input)
 
     expect(result).to eq 1009
   end
