@@ -9,6 +9,12 @@ class IntegerToRoman
     [1, 'I']
   ]
 
+  def self.checkInversion (remainder, decimal_key, index, j)
+    next_decimal_key = CONVERSION[index + j][0]
+    next_remainder = remainder % next_decimal_key
+    ((remainder - next_remainder) == (decimal_key - next_decimal_key))
+  end
+
   def self.calc(input)
     puts input
     remainder = input
@@ -36,7 +42,7 @@ class IntegerToRoman
       if (decimal_key / next_decimal_key == 5) 
         next_remainder = remainder % next_decimal_key
         # if remainder is 4, which is 5(key) - 1(next key), then we want IV instead of IIII
-        if (remainder - next_remainder == (decimal_key - next_decimal_key))
+        if (checkInversion(remainder, decimal_key, index, 1))
           result = result + CONVERSION[index + 1][1] + roman_value
           remainder = next_remainder
         end
@@ -45,10 +51,10 @@ class IntegerToRoman
         next_decimal_key = CONVERSION[index + 2][0]
         next_remainder = remainder % next_decimal_key
           # if remainder is 9, then we want IX instead of VIIII
-        if (remainder - next_remainder == (decimal_key - next_decimal_key))
+        if (checkInversion(remainder, decimal_key, index, 2))
           result = result + CONVERSION[index + 2][1] + roman_value
-          index = index + 1
           remainder = next_remainder
+          index = index + 1
         end
       end
       index = index + 1
