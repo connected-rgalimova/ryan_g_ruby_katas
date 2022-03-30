@@ -16,7 +16,6 @@ class IntegerToRoman
   end
 
   def self.calc(input)
-    puts input
     remainder = input
     result = ''
     index = 0

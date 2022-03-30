@@ -3,100 +3,46 @@ require './app/roman'
 RSpec.describe IntegerToRoman do
   subject(:itor) { described_class }
 
-  it 'should return I given 1' do
-    res = itor.calc(1)
+  CONVERSION = [
+    [1000, 'M'],
+    [500, 'D'],
+    [100, 'C'],
+    [50, 'L'],
+    [10, 'X'],
+    [5, 'V'],
+    [1, 'I']
+  ]
 
-    expect(res).to eq 'I'
+  CONVERSION.each do |(given_integer, expected_numeral)|
+    it "should return #{expected_numeral} given #{given_integer}" do
+      res = itor.calc(given_integer)
+
+      expect(res).to eq expected_numeral
+    end
   end
 
-  it 'should return III given 3' do
-    res = itor.calc(3)
-
-    expect(res).to eq 'III'
-  end
-
-  it 'should return VI given 6' do
-    res = itor.calc(6)
-
-    expect(res).to eq 'VI'
-  end
-
-  it 'should return XVII given 17' do
-    res = itor.calc(17)
-
-    expect(res).to eq 'XVII'
-  end
-
-  it 'should return LXXXVII given 87' do
-    res = itor.calc(87)
-
-    expect(res).to eq 'LXXXVII'
-  end
-
-  it 'should return MCXXXVII given 1137' do
-    res = itor.calc(1137)
-
-    expect(res).to eq 'MCXXXVII'
-  end
-
-  it 'should return MDCCCLXXXVII given 1887' do
+  it 'generates consecutive numerals, e.g. return MDCCCLXXXVII given 1887' do
     res = itor.calc(1887)
 
     expect(res).to eq 'MDCCCLXXXVII'
   end
 
-  it 'should return MDCCCLXXXV given 1885' do
+  it 'generates non-consecutive numerals, e.g. return MCXXXVII given 1137' do
+    res = itor.calc(1137)
+
+    expect(res).to eq 'MCXXXVII'
+  end
+
+  it 'should terminates execution when a remainder of zero is encountered, e.g. return MDCCCLXXXV given 1885' do
     res = itor.calc(1885)
 
     expect(res).to eq 'MDCCCLXXXV'
-  end
-
-  it 'should return MD given 1500' do
-    res = itor.calc(1500)
-
-    expect(res).to eq 'MD'
-  end
-
-  it 'should return M given 1000' do
-    res = itor.calc(1000)
-
-    expect(res).to eq 'M'
-  end
-
-  it 'should return XXV given 25' do
-    res = itor.calc(25)
-
-    expect(res).to eq 'XXV'
-  end
-
-  it 'should return LV given 55' do
-    res = itor.calc(55)
-
-    expect(res).to eq 'LV'
-  end
-
-  it 'should return IV given 4' do
-    res = itor.calc(4)
-
-    expect(res).to eq 'IV'
-  end
-
-  it 'should return IX given 9' do
-    res = itor.calc(9)
-
-    expect(res).to eq 'IX'
   end
 
   it 'should return XXIX given 29' do
     res = itor.calc(29)
 
     expect(res).to eq 'XXIX'
-  end
-
-  it 'should return XCIX given 99' do
-    res = itor.calc(99)
-
-    expect(res).to eq 'XCIX'
   end
 
   it 'should return CMXCIX given 999' do
