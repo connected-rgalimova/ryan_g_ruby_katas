@@ -108,17 +108,21 @@ This will be the game engine which follows the rules of bowling:
 ### Extending String Calculator
 The purpose of this kata is to demonstrate the importance and value of the SOLID principles.
 
-Recommended Prework: Read up on SOLID principles. Some resources:
+Recommended Prework: Read up on SOLID principles.
 
-SOLID Principles in Pictures
-SOLID: The First 5 Principles of OOP (examples in PHP)
+Some resources:
+
+- [SOLID Principles in Pictures](https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898)
+
+- [SOLID: The First 5 Principles of OOP (examples in PHP)](https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design)
+
 The Kata: Extend string calculator so that it:
 
-can add roman numerals
-can return the result in roman numerals, specified by a command in the string input
-remembers and adds to a running total
-can reset the running total, specified by a command in the string input
-validates input to avoid unexpected behaviour
+1. can add roman numerals
+1. can return the result in roman numerals, specified by a command in the string input
+1. remembers and adds to a running total
+1. can reset the running total, specified by a command in the string input
+1. validates input to avoid unexpected behaviour
 
 ## Links
 
