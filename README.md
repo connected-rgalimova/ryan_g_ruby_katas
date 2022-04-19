@@ -105,6 +105,21 @@ This will be the game engine which follows the rules of bowling:
 1. Given an Integer, return as a Roman Numeral
 1. Given a Roman Numeral, return as an Integer
 
+### Extending String Calculator
+The purpose of this kata is to demonstrate the importance and value of the SOLID principles.
+
+Recommended Prework: Read up on SOLID principles. Some resources:
+
+SOLID Principles in Pictures
+SOLID: The First 5 Principles of OOP (examples in PHP)
+The Kata: Extend string calculator so that it:
+
+can add roman numerals
+can return the result in roman numerals, specified by a command in the string input
+remembers and adds to a running total
+can reset the running total, specified by a command in the string input
+validates input to avoid unexpected behaviour
+
 ## Links
 
 - [Old tdd-katas repository in JavaScript](https://github.com/connected-psobocinski/tdd-katas)
